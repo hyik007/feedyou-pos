@@ -1,0 +1,14 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./:/var/www/html
+      - vendor:/var/www/html/vendor   # keep the Linux vendor/ separate from the host's
+    environment:
+      APP_TIMEZONE: Asia/Kuala_Lumpur
+    restart: unless-stopped
+
+volumes:
+  vendor:
