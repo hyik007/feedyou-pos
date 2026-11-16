@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Services\AI\Contracts\LlmClient;
 use App\Services\AI\GeminiClient;
 use App\Services\Settings\SettingsStore;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -18,6 +19,8 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        //
+        if ($this->app->environment('production')) {
+            URL::forceScheme('https');
+        }
     }
 }

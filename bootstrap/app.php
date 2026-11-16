@@ -15,6 +15,8 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->alias(['staff' => StaffAuth::class]);
+        // Vercel/any reverse proxy terminates TLS at the edge.
+        $middleware->trustProxies(at: '*');
         // The API is stateless: staff pages send an X-Staff-Token header (see StaffAuth).
     })
     ->withExceptions(function (Exceptions $exceptions): void {

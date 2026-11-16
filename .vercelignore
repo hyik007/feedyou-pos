@@ -1,0 +1,6 @@
+/_backup_before_restructure
+/node_modules
+/tests
+/storage/logs/*
+/.github
+*.md
